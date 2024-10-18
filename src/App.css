@@ -1,0 +1,23 @@
+* {
+  text-align: center;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #34363f;
+  height: 100vh;
+  width: 100vw;
+}
+.dashboard__textarea {
+  color: #34363f;
+  display: inherit;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: whitesmoke;
+  padding: 2rem;
+  border-radius: 2rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}/*# sourceMappingURL=App.css.map */

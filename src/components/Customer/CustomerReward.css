@@ -1,0 +1,13 @@
+.heading {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.ordered-list { list-style: none;}
+
+#month { font-weight: 700;}
+#points {
+  background-color: #34363f;
+  color: whitesmoke;
+  padding: .1rem;
+}

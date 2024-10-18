@@ -1,0 +1,8 @@
+.customers {
+  margin-top: 3rem;
+}
+
+.customers-textarea {
+  display: flex;
+  justify-content: center;
+}
