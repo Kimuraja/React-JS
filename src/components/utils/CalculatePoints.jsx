@@ -6,7 +6,7 @@ const CalculatePoints = (amount) => {
   } else if (amount > 50 && amount <= 100) {
     points += (amount - 50);
   }
-
+  
   return points;
 };
 
