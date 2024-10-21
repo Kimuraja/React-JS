@@ -69,3 +69,7 @@ Po uruchomieniu aplikacji zobaczysz interfejs **Dashboardu**, który wyświetla 
 1. **Zainstaluj Vite i uruchom projekt**.
 2. **Wybierz użytkownika** z rozwijanego menu, aby zobaczyć jego transakcje i punkty nagród.
 3. Aplikacja automatycznie pobiera dane transakcji i wyświetla punkty za ostatnie trzy miesiące.
+
+## Uruchamianie testów
+
+Aby uruchomić testy jednostkowe w tym projekcie, użyj polecenia `npm test`. Upewnij się, że masz zainstalowane wszystkie wymagane zależności. Możesz to zrobić, uruchamiając:
