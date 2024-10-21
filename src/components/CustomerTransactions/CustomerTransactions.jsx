@@ -1,7 +1,7 @@
 import './CustomerTransactions.css'
 
 const CustomerTransactions = ({ transactions }) => {
-  if (!Array.isArray(transactions)) {
+  if (!Array.isArray(transactions) || transactions.length === 0) {
     return <p>No transactions available.</p>;
   }
 

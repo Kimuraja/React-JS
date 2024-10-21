@@ -1,6 +1,6 @@
-import CustomerReward from './CustomerReward';
+import CustomerReward from '../CustomerReward/CustomerReward';
 import './CustomerOverview.css'
-import CustomerTransactions from './CustomerTransactions';
+import CustomerTransactions from '../CustomerTransactions/CustomerTransactions';
 
 const CustomerOverview = ({ customers }) => {
     return (

@@ -1,4 +1,4 @@
-const CalculatePoints = (amount) => {
+const calculatePoints = (amount) => {
   let points = 0;
 
   if (amount > 100) {
@@ -10,4 +10,4 @@ const CalculatePoints = (amount) => {
   return points;
 };
 
-export default CalculatePoints;
+export default calculatePoints;

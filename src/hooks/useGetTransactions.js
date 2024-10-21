@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTransactions } from "../services/API";
-import CalculateRewardPointsFromTransactions from "../utils/calculateRewardPointsFromTransactions";
+import calculateRewardPointsFromTransactions from "../utils/calculateRewardPointsFromTransactions";
 
 const useGetTransactions = () => {
   const [customers, setCustomers] = useState([]);
@@ -11,7 +11,7 @@ const useGetTransactions = () => {
     getTransactions()
       .then(data => {
         const customersWithPoints = data.map(customer => {
-          const { monthlyRewardPoints, totalPoints } = CalculateRewardPointsFromTransactions(customer.transactions);
+          const { monthlyRewardPoints, totalPoints } = calculateRewardPointsFromTransactions(customer.transactions);
           return { ...customer, monthlyRewardPoints, totalPoints };
         });
         setCustomers(customersWithPoints);
