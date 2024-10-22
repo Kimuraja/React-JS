@@ -7,8 +7,12 @@ const CustomerReward = ({ customer }) => {
         <div className="textarea">
             <h3 className="heading">{name}:</h3>
             <ol className="ordered-list">
-                {Object.entries(monthlyRewardPoints).map(([month, points]) => (
-                    <li key={month}> <span id='month'>{month}:</span> {points ? <span id='points'>{points} Points</span> : <>No reward in this month</>} </li>
+                {Object.entries(monthlyRewardPoints)
+                    .sort(([monthA], [monthB]) => monthB.localeCompare(monthA))
+                    .map(([month, points]) => (
+                    <li key={month}>
+                        <span id='month'>{month}:</span> {points ? <span id='points'>{points} Points</span> : <>No reward in this month</>}
+                    </li>
                 ))}
             </ol>
             <p className='total-points'>Total Points: <span id='points'>{totalPoints}</span></p>
