@@ -1,14 +1,17 @@
 import CalculatePoints from "./calculatePoints";
-import getLastThreeMonts from "./getLastThreeMonths";
+import getLastThreeMonths from "./getLastThreeMonths";
 
 const calculateRewardPointsFromTransactions = (transactions) => {
   const monthlyRewardPoints = {};
   let totalPoints = 0;
-
-  const lastThreeMonths = getLastThreeMonts(transactions);
+  
+  const lastThreeMonths = getLastThreeMonths(transactions);
 
   transactions.forEach(({ month, amount }) => {
     if (lastThreeMonths.includes(month)) {
+      if (typeof amount !== 'number' || amount < 0) {
+        return;
+      }
       const points = CalculatePoints(amount);
 
       if (!monthlyRewardPoints[month]) {
@@ -18,6 +21,10 @@ const calculateRewardPointsFromTransactions = (transactions) => {
       monthlyRewardPoints[month] += points;
       totalPoints += points;
     }
+
+    if (!(month in monthlyRewardPoints)) {
+      monthlyRewardPoints[month] = 0
+    } 
   });
 
   return { monthlyRewardPoints, totalPoints };

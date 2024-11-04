@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1730728201473" clover="3.2.0">
+  <project timestamp="1730728201473" name="All files">
+    <metrics statements="29" coveredstatements="29" conditionals="20" coveredconditionals="20" methods="7" coveredmethods="7" elements="56" coveredelements="56" complexity="0" loc="29" ncloc="29" packages="1" files="3" classes="3"/>
+    <file name="calculatePoints.js" path="/Users/zala/Documents/React-JS/src/utils/calculatePoints.js">
+      <metrics statements="6" coveredstatements="6" conditionals="10" coveredconditionals="10" methods="1" coveredmethods="1"/>
+      <line num="1" count="3" type="stmt"/>
+      <line num="2" count="59" type="stmt"/>
+      <line num="4" count="59" type="cond" truecount="4" falsecount="0"/>
+      <line num="5" count="41" type="cond" truecount="4" falsecount="0"/>
+      <line num="6" count="41" type="cond" truecount="2" falsecount="0"/>
+      <line num="8" count="41" type="stmt"/>
+    </file>
+    <file name="calculateRewardPointsFromTransactions.js" path="/Users/zala/Documents/React-JS/src/utils/calculateRewardPointsFromTransactions.js">
+      <metrics statements="17" coveredstatements="17" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="5" count="7" type="stmt"/>
+      <line num="6" count="7" type="stmt"/>
+      <line num="8" count="7" type="stmt"/>
+      <line num="10" count="7" type="stmt"/>
+      <line num="11" count="41" type="cond" truecount="2" falsecount="0"/>
+      <line num="12" count="22" type="cond" truecount="4" falsecount="0"/>
+      <line num="13" count="3" type="stmt"/>
+      <line num="15" count="19" type="stmt"/>
+      <line num="17" count="19" type="cond" truecount="2" falsecount="0"/>
+      <line num="18" count="17" type="stmt"/>
+      <line num="21" count="19" type="stmt"/>
+      <line num="22" count="19" type="stmt"/>
+      <line num="25" count="38" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="12" type="stmt"/>
+      <line num="30" count="7" type="stmt"/>
+      <line num="31" count="7" type="stmt"/>
+    </file>
+    <file name="getLastThreeMonths.js" path="/Users/zala/Documents/React-JS/src/utils/getLastThreeMonths.js">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="7" type="stmt"/>
+      <line num="3" count="41" type="stmt"/>
+      <line num="4" count="41" type="stmt"/>
+      <line num="5" count="30" type="stmt"/>
+      <line num="7" count="7" type="stmt"/>
+    </file>
+  </project>
+</coverage>

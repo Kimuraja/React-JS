@@ -6,7 +6,7 @@ export const getTransactions = () => {
           customerID: 1,
           name: "Jan",
           transactions: [
-            { month: "2024-09", amount: 120 },
+            { month: "2024-09", amount: 50 },
             { month: "2024-09", amount: 400 },
             { month: "2024-08", amount: 190 },
             { month: "2024-07", amount: 120 },
@@ -69,6 +69,11 @@ export const getTransactions = () => {
             { month: "2024-10", amount: 120 },
             { month: "2011-09", amount: 50 },
           ],
+        },
+        {
+          customerID: 6,
+          name: "Eustachy",
+          transactions: [],
         },
       ];
       resolve(data);
