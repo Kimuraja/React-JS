@@ -4,7 +4,7 @@ const transactionsData = [
     customerID: 1,
     name: "Jan",
     transactions: [
-      { month: "2024-09", amount: 50 },
+      { month: "2024-09", amount: 90 },
       { month: "2024-09", amount: 400 },
       { month: "2024-08", amount: 190 },
       { month: "2024-07", amount: 120 },
@@ -75,88 +75,92 @@ const transactionsData = [
   },
 ];
 
-describe("calculateRewardPointsFromTransactions function:", () => {
-  it(`should return correct points for user with transactions in multiple months for ${transactionsData[0].name}`, () => {
+
+describe("Checking if calculateRewardPointsFromTransactions function returns correct reward points from transactions:", () => {
+  it(`should return list of months with reward points for ${transactionsData[0].name}`, () => {
     const userTransactions = transactionsData[0].transactions;
     const result = calculateRewardPointsFromTransactions(userTransactions);
     expect(result).toEqual({
       "monthlyRewardPoints": {
-        "2024-09": 650,
+        "2024-09": 690,
         "2024-08": 230,
         "2024-07": 100,
-        "2022-11": 0,
-        "2023-01": 0,
-        "2023-07": 0,
-        "2024-01": 0,
-        "2024-02": 0,
-        "2024-04": 0,
-        "2024-05": 0,
-        "2024-06": 0,
-      }, 
-      "totalPoints": 980},
+        "2022-11": 2290,
+        "2023-01": 1490,
+        "2023-07": 1870,
+        "2024-01": 110,
+        "2024-02": 10,
+        "2024-04": 280,
+        "2024-05": 50,
+        "2024-06": 30,
+      },
+      "totalPoints": 7150},
     );
   });
 
 
-  it(`should return correct points for user with transactions in multiple months for ${transactionsData[1].name}`, () => {
+  it(`should return list of months with and without reward points for ${transactionsData[1].name}`, () => {
     const userTransactions = transactionsData[1].transactions;
     const result = calculateRewardPointsFromTransactions(userTransactions);
     expect(result).toEqual({
       "monthlyRewardPoints": {
-        "2021-08": 0,
+        "2021-08": "No reward for this transaction month",
         "2023-08": 40,
         "2024-08": 20,
-      }, 
+      },
       "totalPoints": 60},
     );
   });
 
-  it(`should return correct points for user with transactions in multiple months for ${transactionsData[2].name}`, () => {
+
+  it(`should return list of months with and without reward points for ${transactionsData[2].name}`, () => {
     const userTransactions = transactionsData[2].transactions;
     const result = calculateRewardPointsFromTransactions(userTransactions);
     expect(result).toEqual({
       "monthlyRewardPoints": {
-        "2022-10": 0,
-        "2023-08": 0,
-        "2023-09": 0,
+        "2022-10": "No reward for this transaction month",
+        "2023-08": 50,
+        "2023-09": "No reward for this transaction month",
         "2024-10": 40,
         "2024-09": 90,
         "2024-08": 50,
-      }, 
-      "totalPoints": 180},
+      },
+      "totalPoints": 230},
     );
   });
 
 
-  it(`should return correct points for user with transactions in multiple months for ${transactionsData[3].name}`, () => {
+  it(`should return list of months with and without reward points for ${transactionsData[3].name}`, () => {
     const userTransactions = transactionsData[3].transactions;
     const result = calculateRewardPointsFromTransactions(userTransactions);
     expect(result).toEqual({
       "monthlyRewardPoints": {
-        "2024-09": 0,
+        "2024-09": "No reward for this transaction month",
         "2024-08": 50,
-      }, 
-      "totalPoints": 50},
+      },
+      "totalPoints": 50,
+    },
     );
   });
 
 
-  it(`should return correct points for user with transactions in multiple months for ${transactionsData[4].name}`, () => {
+  it(`should return list of months with and without reward points for ${transactionsData[4].name}`, () => {
     const userTransactions = transactionsData[4].transactions;
     const result = calculateRewardPointsFromTransactions(userTransactions);
     expect(result).toEqual({
       "monthlyRewardPoints": {
         "2024-10": 90,
-        "2024-08": 0,
-        "2011-09": 0,
-        "2004-09": 0,
+        "2024-08": "No reward for this transaction month",
+        "2011-09": "No reward for this transaction month",
+        "2004-09": "No reward for this transaction month",
       }, 
-      "totalPoints": 90},
+      "totalPoints": 90,
+    },
     );
   });
 
 
-  it(`should return correct points for user with transactions in multiple months for ${transactionsData[5].name}`, () => {
+  it(`should return empty because of no transactions for ${transactionsData[5].name}`, () => {
     const userTransactions = transactionsData[5].transactions;
     const result = calculateRewardPointsFromTransactions(userTransactions);
     expect(result).toEqual({
@@ -164,7 +168,6 @@ describe("calculateRewardPointsFromTransactions function:", () => {
       "totalPoints": 0},
     );
   });
-
 
   it("should handle invalid transactions gracefully", () => {
     const invalidTransactions = [
@@ -175,7 +178,11 @@ describe("calculateRewardPointsFromTransactions function:", () => {
   
     const result = calculateRewardPointsFromTransactions(invalidTransactions);
     expect(result).toEqual({
-      "monthlyRewardPoints": {},
+      "monthlyRewardPoints": {
+        "2024-07": "No reward for this transaction month",
+        "2024-08": "No reward for this transaction month",
+        "2024-09": "No reward for this transaction month",
+      },
       "totalPoints": 0,
     });
   });
