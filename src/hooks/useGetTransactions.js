@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getTransactions } from "../services/API";
-import calculateRewardPointsFromTransactions from "../utils/calculateRewardPointsFromTransactions";
+import calculateRewardPointsFromTransactions from "../utils/calculateRewardPointsFromTransactions/calculateRewardPointsFromTransactions";
 
 const useGetTransactions = () => {
   const [customers, setCustomers] = useState([]);

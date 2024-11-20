@@ -1,9 +1,10 @@
 import calculatePoints from "./calculatePoints";
 
-describe('calculatePoints', () => {
+describe('calculatePoints()', () => {
   it('should return 0 for amounts less than or equal to 50', () => {
     expect(calculatePoints(0)).toBe(0);
-    expect(calculatePoints(50)).toBe(0);
+    expect(calculatePoints(25)).toBe(0);
+    expect(calculatePoints(50)).toBe(0);  
   });
 
   it('should return correct points for amounts between 50 and 100', () => {
@@ -17,8 +18,7 @@ describe('calculatePoints', () => {
     expect(calculatePoints(200)).toBe(250);
   });
 
-  it("should handle case when there are no transactions", () => {
-    const result = calculatePoints([]);
-    expect(result).toEqual(0);
-  });
+  it("should throw an error when invalid data is provided",() => {
+    expect(() => calculatePoints('abc')).toThrow(/Invalid input: amount must be a positive number/);
+  })
 });

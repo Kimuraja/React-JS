@@ -1,4 +1,6 @@
 import calculateRewardPointsFromTransactions from './calculateRewardPointsFromTransactions'
+
+
 const transactionsData = [
   {
     customerID: 1,
@@ -76,10 +78,12 @@ const transactionsData = [
 ];
 
 
-describe("Checking if calculateRewardPointsFromTransactions function returns correct reward points from transactions:", () => {
-  it(`should return list of months with reward points for ${transactionsData[0].name}`, () => {
+describe("calculateRewardPointsFromTransactions()", () => {
+  it(`should return list of reward points per month and total for ${transactionsData[0].name}`, () => {
     const userTransactions = transactionsData[0].transactions;
+
     const result = calculateRewardPointsFromTransactions(userTransactions);
+
     expect(result).toEqual({
       "monthlyRewardPoints": {
         "2024-09": 690,
@@ -98,10 +102,12 @@ describe("Checking if calculateRewardPointsFromTransactions function returns cor
     );
   });
 
-
-  it(`should return list of months with and without reward points for ${transactionsData[1].name}`, () => {
+  
+  it(`should return list of reward points per month and total for ${transactionsData[1].name}`, () => {
     const userTransactions = transactionsData[1].transactions;
+
     const result = calculateRewardPointsFromTransactions(userTransactions);
+
     expect(result).toEqual({
       "monthlyRewardPoints": {
         "2021-08": "No reward for this transaction month",
@@ -113,9 +119,11 @@ describe("Checking if calculateRewardPointsFromTransactions function returns cor
   });
 
 
-  it(`should return list of months with and without reward points for ${transactionsData[2].name}`, () => {
+  it(`should return list of reward points per month and total for ${transactionsData[2].name}`, () => {
     const userTransactions = transactionsData[2].transactions;
+
     const result = calculateRewardPointsFromTransactions(userTransactions);
+
     expect(result).toEqual({
       "monthlyRewardPoints": {
         "2022-10": "No reward for this transaction month",
@@ -130,9 +138,11 @@ describe("Checking if calculateRewardPointsFromTransactions function returns cor
   });
 
 
-  it(`should return list of months with and without reward points for ${transactionsData[3].name}`, () => {
+  it(`should return list of reward points per month and total for ${transactionsData[3].name}`, () => {
     const userTransactions = transactionsData[3].transactions;
+
     const result = calculateRewardPointsFromTransactions(userTransactions);
+
     expect(result).toEqual({
       "monthlyRewardPoints": {
         "2024-09": "No reward for this transaction month",
@@ -144,9 +154,11 @@ describe("Checking if calculateRewardPointsFromTransactions function returns cor
   });
 
 
-  it(`should return list of months with and without reward points for ${transactionsData[4].name}`, () => {
+  it(`should return list of reward points per month and total for ${transactionsData[4].name}`, () => {
     const userTransactions = transactionsData[4].transactions;
+
     const result = calculateRewardPointsFromTransactions(userTransactions);
+
     expect(result).toEqual({
       "monthlyRewardPoints": {
         "2024-10": 90,
@@ -160,30 +172,32 @@ describe("Checking if calculateRewardPointsFromTransactions function returns cor
   });
 
 
-  it(`should return empty because of no transactions for ${transactionsData[5].name}`, () => {
+  it(`should return empty list if user has no transactions${transactionsData[5].name}`, () => {
     const userTransactions = transactionsData[5].transactions;
+
     const result = calculateRewardPointsFromTransactions(userTransactions);
+
     expect(result).toEqual({
       "monthlyRewardPoints": {}, 
       "totalPoints": 0},
     );
   });
 
-  it("should handle invalid transactions gracefully", () => {
+
+  it("should throw an error when invalid transactions was provided", () => {
     const invalidTransactions = [
       { month: "2024-09", amount: -50 },
       { month: "2024-08", amount: "not a number" },
       { month: "2024-07", amount: null },
     ];
-  
-    const result = calculateRewardPointsFromTransactions(invalidTransactions);
-    expect(result).toEqual({
-      "monthlyRewardPoints": {
-        "2024-07": "No reward for this transaction month",
-        "2024-08": "No reward for this transaction month",
-        "2024-09": "No reward for this transaction month",
-      },
-      "totalPoints": 0,
-    });
+    
+    expect(()=> calculateRewardPointsFromTransactions(invalidTransactions)).toThrow(/Invalid Input/);
   });
+  
+
+  it('should throw an error when wrong data was provided', ()=> {
+    const invalidData = 'abc'
+    expect(()=> calculateRewardPointsFromTransactions(invalidData)).toThrow()
+  })
+
 })

@@ -1,3 +1,6 @@
+import analyzeTransactionCount from "./analyzeTransactionCount";
+import getTransactionCountsByMonth from "./getTransactionCountsByMonth";
+
 const transactionsData = [
   {
     customerID: 1,
@@ -75,35 +78,12 @@ const transactionsData = [
 ];
 
 
-describe("Checking if is there more than one transaction in single month :", () => {
-  const getTransactionCountInfo = (transactions) => {
-    const transactionCount = {};
-    transactions.forEach(({ month }) => {
-      transactionCount[month] = (transactionCount[month] || 0) + 1;
-    });
-    return transactionCount;
-  };
-
-  const analyzeTransactionCount = (transactionCount) => {
-    const result = {};
-    for (const month in transactionCount) {
-      const count = transactionCount[month];
-      if (count > 1) {
-        result[month] = "Has more than 1 transaction in this month";
-      } else if (count === 1) {
-        result[month] = "Has 1 transaction in this month";
-      } else {
-        result[month] = "Has no transactions in this month";
-      }
-    }
-    return result;
-  };
-
-  it(`should return info if there is more than one transaction in a single month for ${transactionsData[0].name}`, () => {
-    const transactionCount = getTransactionCountInfo(transactionsData[0].transactions);
-    const multipleTransactionsInfo = analyzeTransactionCount(transactionCount);
+describe("getTransactionCountInfo() | analyzeTransactionCount()", () => {
+  it(`should identify months with multiple transactions for ${transactionsData[0].name}`, () => {
+    const transactionCount = getTransactionCountsByMonth(transactionsData[0].transactions);
+    const monthlyTransactionDescriptions = analyzeTransactionCount(transactionCount);
     
-    expect(multipleTransactionsInfo).toEqual({
+    expect(monthlyTransactionDescriptions).toEqual({
       "2024-09": "Has more than 1 transaction in this month",
       "2024-08": "Has 1 transaction in this month",
       "2024-07": "Has more than 1 transaction in this month",
@@ -119,11 +99,11 @@ describe("Checking if is there more than one transaction in single month :", () 
   });
 
 
-  it(`should return info if there is more than one transaction in a single month for ${transactionsData[1].name}`, () => {
-    const transactionCount = getTransactionCountInfo(transactionsData[1].transactions);
-    const multipleTransactionsInfo = analyzeTransactionCount(transactionCount);
+  it(`should identify months with multiple transactions for ${transactionsData[1].name}`, () => {
+    const transactionCount = getTransactionCountsByMonth(transactionsData[1].transactions);
+    const monthlyTransactionDescriptions = analyzeTransactionCount(transactionCount);
     
-    expect(multipleTransactionsInfo).toEqual({
+    expect(monthlyTransactionDescriptions).toEqual({
       "2021-08": "Has 1 transaction in this month",
       "2023-08": "Has 1 transaction in this month",
       "2024-08": "Has 1 transaction in this month",
@@ -131,11 +111,11 @@ describe("Checking if is there more than one transaction in single month :", () 
   });
 
 
-  it(`should return info if there is more than one transaction in a single month for ${transactionsData[2].name}`, () => {
-    const transactionCount = getTransactionCountInfo(transactionsData[2].transactions);
-    const multipleTransactionsInfo = analyzeTransactionCount(transactionCount);
+  it(`should identify months with multiple transactions for ${transactionsData[2].name}`, () => {
+    const transactionCount = getTransactionCountsByMonth(transactionsData[2].transactions);
+    const monthlyTransactionDescriptions = analyzeTransactionCount(transactionCount);
     
-    expect(multipleTransactionsInfo).toEqual({
+    expect(monthlyTransactionDescriptions).toEqual({
       "2022-10": "Has 1 transaction in this month",
       "2023-08": "Has 1 transaction in this month",
       "2023-09": "Has 1 transaction in this month",
@@ -146,22 +126,22 @@ describe("Checking if is there more than one transaction in single month :", () 
   });
   
   
-  it(`should return info if there is more than one transaction in a single month for ${transactionsData[3].name}`, () => {
-    const transactionCount = getTransactionCountInfo(transactionsData[3].transactions);
-    const multipleTransactionsInfo = analyzeTransactionCount(transactionCount);
+  it(`should identify months with multiple transactions for ${transactionsData[3].name}`, () => {
+    const transactionCount = getTransactionCountsByMonth(transactionsData[3].transactions);
+    const monthlyTransactionDescriptions = analyzeTransactionCount(transactionCount);
     
-    expect(multipleTransactionsInfo).toEqual({
+    expect(monthlyTransactionDescriptions).toEqual({
       "2024-08": "Has 1 transaction in this month",
       "2024-09": "Has 1 transaction in this month",
     });
   });
   
   
-  it(`should return info if there is more than one transaction in a single month for ${transactionsData[4].name}`, () => {
-    const transactionCount = getTransactionCountInfo(transactionsData[4].transactions);
-    const multipleTransactionsInfo = analyzeTransactionCount(transactionCount);
+  it(`should identify months with multiple transactions for ${transactionsData[4].name}`, () => {
+    const transactionCount = getTransactionCountsByMonth(transactionsData[4].transactions);
+    const monthlyTransactionDescriptions = analyzeTransactionCount(transactionCount);
     
-    expect(multipleTransactionsInfo).toEqual({
+    expect(monthlyTransactionDescriptions).toEqual({
       "2004-09": "Has 1 transaction in this month",
       "2011-09": "Has 1 transaction in this month",
       "2024-08": "Has 1 transaction in this month",
@@ -170,10 +150,16 @@ describe("Checking if is there more than one transaction in single month :", () 
   });
   
   
-  it(`should return info if there is more than one or just one transaction in a single month for ${transactionsData[5].name}`, () => {
-    const transactionCount = getTransactionCountInfo(transactionsData[5].transactions);
-    const multipleTransactionsInfo = analyzeTransactionCount(transactionCount);
+  it(`should return an empty object for a customer with no transactions: ${transactionsData[5].name}`, () => {
+    const transactionCount = getTransactionCountsByMonth(transactionsData[5].transactions);
+    const monthlyTransactionDescriptions = analyzeTransactionCount(transactionCount);
     
-    expect(multipleTransactionsInfo).toEqual({});
+    expect(monthlyTransactionDescriptions).toEqual({});
+  });
+
+
+  it('should throw an error when invalid data is provided', () => {
+    const invalidData = 'pomidor';
+    expect(() => getTransactionCountsByMonth(invalidData[0].transactions)).toThrow(/Invalid input: transactions must be an array/);
   });
 });

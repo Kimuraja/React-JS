@@ -1,4 +1,4 @@
-import CalculatePoints from "./calculatePoints";
+import CalculatePoints from "../calculatePoints/calculatePoints";
 
 const calculateRewardPointsFromTransactions = (transactions) => {
   const monthlyRewardPoints = {};
@@ -7,7 +7,7 @@ const calculateRewardPointsFromTransactions = (transactions) => {
 
   transactions.forEach(({ month, amount }) => {
       if (typeof amount !== 'number' || amount < 0) {
-        return;
+        throw new Error('Invalid Input');
       }
 
       let points = CalculatePoints(amount);
@@ -26,7 +26,7 @@ const calculateRewardPointsFromTransactions = (transactions) => {
     }
   });
 
-  return { monthlyRewardPoints, totalPoints};
+  return { monthlyRewardPoints, totalPoints };
 };
 
 export default calculateRewardPointsFromTransactions;

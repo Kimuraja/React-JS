@@ -1,4 +1,8 @@
 const calculatePoints = (amount) => {
+  if ( typeof amount !== 'number' || amount < 0 ) {
+    throw new Error('Invalid input: amount must be a positive number')
+  }
+
   let points = 0;
 
   if (amount <= 50) { return 0 };
