@@ -79,7 +79,7 @@ const transactionsData = [
 
 
 describe("calculateRewardPointsFromTransactions()", () => {
-  it(`should return list of reward points per month and total for ${transactionsData[0].name}`, () => {
+  it(`should return the correct list and sum when one of the months is empty: ${transactionsData[0].name}`, () => {
     const userTransactions = transactionsData[0].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
@@ -103,7 +103,7 @@ describe("calculateRewardPointsFromTransactions()", () => {
   });
 
   
-  it(`should return list of reward points per month and total for ${transactionsData[1].name}`, () => {
+  it(`should return the correct list and sum when one of the months is empty: ${transactionsData[1].name}`, () => {
     const userTransactions = transactionsData[1].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
@@ -119,7 +119,7 @@ describe("calculateRewardPointsFromTransactions()", () => {
   });
 
 
-  it(`should return list of reward points per month and total for ${transactionsData[2].name}`, () => {
+  it(`should return the correct list and sum when one of the months is empty: ${transactionsData[2].name}`, () => {
     const userTransactions = transactionsData[2].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
@@ -138,7 +138,7 @@ describe("calculateRewardPointsFromTransactions()", () => {
   });
 
 
-  it(`should return list of reward points per month and total for ${transactionsData[3].name}`, () => {
+  it(`should return the correct list and sum when one of the months is empty: ${transactionsData[3].name}`, () => {
     const userTransactions = transactionsData[3].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
@@ -154,7 +154,7 @@ describe("calculateRewardPointsFromTransactions()", () => {
   });
 
 
-  it(`should return list of reward points per month and total for ${transactionsData[4].name}`, () => {
+  it(`should return the correct list and sum when one of the months is empty: ${transactionsData[4].name}`, () => {
     const userTransactions = transactionsData[4].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
