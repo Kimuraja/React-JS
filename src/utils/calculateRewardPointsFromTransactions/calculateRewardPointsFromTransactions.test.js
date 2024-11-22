@@ -79,7 +79,7 @@ const transactionsData = [
 
 
 describe("calculateRewardPointsFromTransactions()", () => {
-  it(`should return the correct list and sum: ${transactionsData[0].name}`, () => {
+  it(`should return correct list and sum when no months are empty: ${transactionsData[0].name}`, () => {
     const userTransactions = transactionsData[0].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
