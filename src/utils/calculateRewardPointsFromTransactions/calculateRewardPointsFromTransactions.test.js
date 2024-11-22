@@ -79,7 +79,7 @@ const transactionsData = [
 
 
 describe("calculateRewardPointsFromTransactions()", () => {
-  it(`should return the correct list and sum when one of the months is empty: ${transactionsData[0].name}`, () => {
+  it(`should return the correct list and sum: ${transactionsData[0].name}`, () => {
     const userTransactions = transactionsData[0].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
@@ -119,7 +119,7 @@ describe("calculateRewardPointsFromTransactions()", () => {
   });
 
 
-  it(`should return the correct list and sum when one of the months is empty: ${transactionsData[2].name}`, () => {
+  it(`should return the correct list and sum when two of the months are empty: ${transactionsData[2].name}`, () => {
     const userTransactions = transactionsData[2].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
@@ -154,7 +154,7 @@ describe("calculateRewardPointsFromTransactions()", () => {
   });
 
 
-  it(`should return the correct list and sum when one of the months is empty: ${transactionsData[4].name}`, () => {
+  it(`should return the correct list and sum when three of the months are empty: ${transactionsData[4].name}`, () => {
     const userTransactions = transactionsData[4].transactions;
 
     const result = calculateRewardPointsFromTransactions(userTransactions);
